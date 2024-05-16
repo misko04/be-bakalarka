@@ -1,0 +1,6 @@
+[
+  {
+    "Action": ["cognito-idp:ListUsers"],
+    "Resource": ["arn:aws:cognito-idp:eu-central-1:840717115493:userpool/eu-central-1_12JGW4S8I"]
+  }
+]

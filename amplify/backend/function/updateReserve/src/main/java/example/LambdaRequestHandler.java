@@ -1,0 +1,136 @@
+package example;
+
+import com.amazonaws.services.lambda.runtime.Context; 
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map; 
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.LambdaLogger; 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import main.java.example.Reservations;
+import example.RequestClass;
+import example.ResponseClass;
+import com.jayway.jsonpath.JsonPath;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import java.util.Comparator;
+
+import javax.crypto.SecretKey;
+import java.util.Base64;
+
+
+public class LambdaRequestHandler implements RequestHandler<RequestClass, Map<String, Object> >{   
+    private DynamoDBMapper mapper;
+    private static final String secret = "8ea51b9fe482f246dea82b2635025a5c7ad4d8819ea42f30bf44b29663b9b810";
+
+    public LambdaRequestHandler() {
+        AmazonDynamoDB dynamoDBClient = AmazonDynamoDBClient.builder().build();
+        this.mapper = new DynamoDBMapper(dynamoDBClient);
+    }
+
+    public Map<String, Object> handleRequest(RequestClass request,Context context){
+        LambdaLogger logger = context.getLogger();
+
+        logger.log("String found: " + request.getBody());
+        logger.log("header:" + request.getHeaders());
+
+        String date = JsonPath.read(request.getBody(), "$.date");
+        String spotId = JsonPath.read(request.getBody(), "$.spotId");
+
+        String jwtToken = JsonPath.read(request.getHeaders(), "$.Authorization");
+
+        String[] chunks = jwtToken.split("\\.");
+        Base64.Decoder decoder = Base64.getUrlDecoder();
+
+        String header = new String(decoder.decode(chunks[0]));
+        String payload = new String(decoder.decode(chunks[1]));
+        ObjectMapper mapperStr = new ObjectMapper();
+        String userId = null;
+        try{
+        JsonNode payloadJson = mapperStr.readTree(payload);
+        userId = payloadJson.get("id").asText();
+        }catch(Exception e){
+            logger.log("Error: " + e);
+        }
+
+        logger.log("String found: " + request.getBody());
+        logger.log("header:" + request.getHeaders());
+
+        Map<String, Object> res = new HashMap<>();
+        
+        String body =  "{" +
+                        "\"updated\":\"" + updateReservation(spotId,userId,date) + "\"" +
+                        "}";
+        res.put("body", body);
+
+        return res;
+    } 
+
+    public boolean updateReservation(String spotId, String userId, String date) {
+      
+            Reservations reservation = getReservations(userId, date).get(0);
+    
+            reservation.setsId(spotId);
+            reservation.setuId(userId);
+            reservation.setDate(date);
+            mapper.save(reservation);
+            return true;
+    
+    }
+
+
+    public PaginatedScanList<Reservations> getReservations(String userId, String date) {
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+        Map<String, Condition> filterConditions = new HashMap<>();
+    
+        filterConditions.put(
+                "uId",
+                new Condition()
+                        .withComparisonOperator(ComparisonOperator.EQ)
+                        .withAttributeValueList(new AttributeValue(userId))
+        );
+    
+        
+        filterConditions.put(
+                "date",
+                new Condition()
+                        .withComparisonOperator(ComparisonOperator.GE)
+                        .withAttributeValueList(new AttributeValue(date))
+        );
+    
+        scanExpression.setScanFilter(filterConditions);
+        PaginatedScanList<Reservations> result = mapper.scan(Reservations.class, scanExpression);
+        return result.isEmpty() ? null : result;
+    }
+    }
+
+    // private static Claims decodeJWT(String jwtToken) {
+        
+    //     SecretKey key = Keys.hmacShaKeyFor(secret.getBytes());
+
+    //     Jws<Claims> jws = Jwts.parserBuilder()
+    //             .setSigningKey(key)
+    //             .build()
+    //             .parseClaimsJws(jwtToken);
+
+    //     return jws.getBody();
+    // }

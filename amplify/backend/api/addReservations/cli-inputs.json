@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/add/reservation": {
+      "name": "/api/add/reservation",
+      "lambdaFunction": "addReservation",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/add/quick/reservation": {
+      "name": "/api/add/quick/reservation",
+      "lambdaFunction": "quickReserve",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/add/permanent/reservation": {
+      "name": "/api/add/permanent/reservation",
+      "lambdaFunction": "addPermanentReserve",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

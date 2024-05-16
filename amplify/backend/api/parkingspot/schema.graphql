@@ -1,0 +1,60 @@
+type ParkingSpot @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: Int
+  variant: String
+  reversed: Boolean
+  x: Int
+  y: Int
+  h: Int
+  w: Int
+  maxW: String
+  rotation: Int
+}
+
+type Reservations @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userID: String
+  spotID: String
+  date: AWSDate
+}
+
+type Maps @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  rows: Int
+  columns: Int
+}
+
+type Filler @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  rotation: Int
+  mapName: String
+  y: Int
+  x: Int
+  maxW: Int
+  h: Int
+  w: Int
+}
+
+type OfficeEntry @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  rotation: Int
+  directEntrance: Boolean
+  staircase: Boolean
+  elevator: Boolean
+  mapName: String
+  y: Int
+  x: Int
+  maxW: Int
+  h: Int
+  w: Int
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  email: String
+  car_plate: String
+  password: String
+}
+ 

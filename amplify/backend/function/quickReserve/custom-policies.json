@@ -1,0 +1,9 @@
+[
+  {
+    "Action": ["dynamodb:Scan","dynamodb:PutItem"],
+    "Resource": [
+                  "arn:aws:dynamodb:eu-central-1:840717115493:table/Reservations-f2sgeizrpjb7tmxb5pd7xnbcu4-staging",
+                  "arn:aws:dynamodb:eu-central-1:840717115493:table/ParkingSpot-f2sgeizrpjb7tmxb5pd7xnbcu4-staging"
+                ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/get/reservations": {
+      "name": "/api/get/reservations",
+      "lambdaFunction": "getAllReservations",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/get/reservation/info": {
+      "name": "/api/get/reservation/info",
+      "lambdaFunction": "getReservationInfo",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/get/future/user/reservations": {
+      "name": "/api/get/future/user/reservations",
+      "lambdaFunction": "getFutureUserReservations",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

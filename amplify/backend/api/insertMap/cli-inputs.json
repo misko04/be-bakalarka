@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/insertMap": {
+      "name": "/api/insertMap",
+      "lambdaFunction": "InsertMap",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

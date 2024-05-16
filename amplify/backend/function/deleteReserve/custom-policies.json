@@ -1,0 +1,8 @@
+[
+  {
+    "Action": ["dynamodb:Scan","dynamodb:DeleteItem"],
+    "Resource": [
+                  "arn:aws:dynamodb:eu-central-1:840717115493:table/Reservations-f2sgeizrpjb7tmxb5pd7xnbcu4-staging"
+                ]
+  }
+]

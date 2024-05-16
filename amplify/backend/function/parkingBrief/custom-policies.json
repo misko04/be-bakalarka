@@ -1,0 +1,6 @@
+[
+  {
+    "Action": ["dynamodb:Scan"],
+    "Resource": ["arn:aws:dynamodb:eu-central-1:840717115493:table/Maps-f2sgeizrpjb7tmxb5pd7xnbcu4-staging"]
+  }
+]

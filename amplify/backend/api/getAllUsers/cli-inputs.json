@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/users/all": {
+      "name": "/api/users/all",
+      "lambdaFunction": "getAllUsers",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

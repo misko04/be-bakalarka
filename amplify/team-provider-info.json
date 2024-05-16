@@ -1,0 +1,84 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-parkingspot-staging-162106-authRole",
+      "UnauthRoleArn": "arn:aws:iam::840717115493:role/amplify-parkingspot-staging-162106-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::840717115493:role/amplify-parkingspot-staging-162106-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+      "UnauthRoleName": "amplify-parkingspot-staging-162106-unauthRole",
+      "StackName": "amplify-parkingspot-staging-162106",
+      "StackId": "arn:aws:cloudformation:eu-central-1:840717115493:stack/amplify-parkingspot-staging-162106/2b8155e0-71c0-11ee-ad04-0a63a78d43c7",
+      "AmplifyAppId": "d361iq07l3hocz"
+    },
+    "categories": {
+      "auth": {
+        "parkingspot": {}
+      },
+      "function": {
+        "GetMapsByName": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/GetMapsByName-6e39752b2b5645734c4d-build.zip"
+        },
+        "InsertMap": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/InsertMap-616345582f74506c776a-build.zip"
+        },
+        "addPermanentReserve": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/addPermanentReserve-72415a683234432f3772-build.zip"
+        },
+        "addReservation": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/addReservation-72725931324e2b4f5655-build.zip"
+        },
+        "deleteReserve": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/deleteReserve-356363634c436864764c-build.zip"
+        },
+        "getAllReservations": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/getAllReservations-716a432b723366643534-build.zip"
+        },
+        "getAllUsers": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/getAllUsers-37594f48415978566f32-build.zip"
+        },
+        "getEmptySpots": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/getEmptySpots-7a503051516554646736-build.zip"
+        },
+        "getFutureUserReservations": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/getFutureUserReservations-6e555741756c316b514d-build.zip"
+        },
+        "getReservationInfo": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/getReservationInfo-39694d656236796f5a50-build.zip"
+        },
+        "parkingBrief": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/parkingBrief-30757459443556796561-build.zip"
+        },
+        "quickReserve": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/quickReserve-546f2b302f454533584d-build.zip"
+        },
+        "updateReserve": {
+          "deploymentBucketName": "amplify-parkingspot-staging-162106-deployment",
+          "s3Key": "amplify-builds/updateReserve-5a46464951717579434d-build.zip"
+        }
+      },
+      "api": {
+        "addReservations": {},
+        "editReservation": {},
+        "getAllUsers": {},
+        "getMapByName": {},
+        "getReservations": {},
+        "insertMap": {},
+        "parkingsBrief": {},
+        "parkingspot": {}
+      }
+    }
+  }
+}

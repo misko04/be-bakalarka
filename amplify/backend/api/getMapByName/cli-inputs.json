@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/maps": {
+      "name": "/api/maps",
+      "lambdaFunction": "GetMapsByName",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/maps/empty": {
+      "name": "/api/maps/empty",
+      "lambdaFunction": "getEmptySpots",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

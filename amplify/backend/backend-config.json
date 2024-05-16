@@ -1,0 +1,474 @@
+{
+  "api": {
+    "addReservations": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "addReservation"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "quickReserve"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "addPermanentReserve"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "editReservation": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "updateReserve"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "deleteReserve"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "getAllUsers": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getAllUsers"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "getMapByName": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GetMapsByName"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getEmptySpots"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "getReservations": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getAllReservations"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getReservationInfo"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getFutureUserReservations"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "insertMap": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "InsertMap"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "parkingsBrief": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "parkingBrief"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "parkingspot": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "parkingspot": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
+    }
+  },
+  "function": {
+    "GetMapsByName": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "InsertMap": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "addPermanentReserve": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "addReservation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "deleteReserve": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getAllReservations": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getAllUsers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getEmptySpots": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getFutureUserReservations": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getReservationInfo": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "parkingBrief": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "quickReserve": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "updateReserve": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_GetMapsByName_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetMapsByName"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetMapsByName_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetMapsByName"
+        }
+      ]
+    },
+    "AMPLIFY_function_InsertMap_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "InsertMap"
+        }
+      ]
+    },
+    "AMPLIFY_function_InsertMap_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "InsertMap"
+        }
+      ]
+    },
+    "AMPLIFY_function_addPermanentReserve_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addPermanentReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_addPermanentReserve_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addPermanentReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_addReservation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addReservation"
+        }
+      ]
+    },
+    "AMPLIFY_function_addReservation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addReservation"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteReserve_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteReserve_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAllReservations_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAllReservations"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAllReservations_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAllReservations"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAllUsers_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAllUsers"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAllUsers_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAllUsers"
+        }
+      ]
+    },
+    "AMPLIFY_function_getEmptySpots_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getEmptySpots"
+        }
+      ]
+    },
+    "AMPLIFY_function_getEmptySpots_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getEmptySpots"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFutureUserReservations_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFutureUserReservations"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFutureUserReservations_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFutureUserReservations"
+        }
+      ]
+    },
+    "AMPLIFY_function_getReservationInfo_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getReservationInfo"
+        }
+      ]
+    },
+    "AMPLIFY_function_getReservationInfo_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getReservationInfo"
+        }
+      ]
+    },
+    "AMPLIFY_function_parkingBrief_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parkingBrief"
+        }
+      ]
+    },
+    "AMPLIFY_function_parkingBrief_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parkingBrief"
+        }
+      ]
+    },
+    "AMPLIFY_function_quickReserve_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "quickReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_quickReserve_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "quickReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateReserve_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateReserve"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateReserve_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateReserve"
+        }
+      ]
+    }
+  }
+}

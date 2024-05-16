@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/update/reservation": {
+      "name": "/api/update/reservation",
+      "lambdaFunction": "updateReserve",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/api/delete/reservation": {
+      "name": "/api/delete/reservation",
+      "lambdaFunction": "deleteReserve",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

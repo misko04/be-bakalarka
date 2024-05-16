@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api/parking/brief": {
+      "name": "/api/parking/brief",
+      "lambdaFunction": "parkingBrief",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
